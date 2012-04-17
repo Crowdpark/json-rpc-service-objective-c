@@ -1,0 +1,31 @@
+1) Include all files in the repo to an iOS project.
+
+2) Disable ARC for all the files of the AFNetworking library.
+
+3) In your .pch file add
+
+    #import "AFNetworking.h"
+
+4) In your .pch file include your config file, where you have defines for 
+
+API host: kApiHost 
+API port: kAPIPort
+API path: kAPIPath
+
+Example:
+
+#define kApiHost @"http://local.goanteup.com/"
+#define kAPIPort 4242
+#define kAPIPath @"api/v1/app_mobile/"
+
+5) make calls to the API like so:
+
+    [[API sharedInstance] command:@"AppMobile.Notification.whatsUp" 
+                       withParams:nil 
+                         complete:^(id result) {
+                            //result
+                             NSLog(@"result %@", result);
+                             
+                         } error:^(NSError *e) {
+                             NSLog(@"error: %@", e);
+                         }];
