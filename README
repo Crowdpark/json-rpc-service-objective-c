@@ -20,8 +20,12 @@ Example:
 
 5) make calls to the API like so:
 
+	NSDictionary* params = [NSDictionary dictionaryWithObjectsAndKeys: 
+							@"friends", @"type", 
+							nil];
+
     [[API sharedInstance] command:@"AppMobile.Notification.whatsUp" 
-                       withParams:nil 
+                       withParams:params
                          complete:^(id result) {
                             //result
                              NSLog(@"result %@", result);
